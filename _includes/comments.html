@@ -1,3 +1,18 @@
 {% if site.comment.output %}
-<aside class="comments">{{ site.comment.html }}</aside>
+<aside class="comments">
+{% if site.comment.service == "giscus" %}
+<div class="giscus">
+  Loading comments...
+</div>
+<script src="//giscus.app/client.js"
+  {{ site.comments.giscus }}
+  async>
+</script>
+{% elsif site.comment.service == "disqus" %}
+<div id="disqus_thread">
+  Loading comments...
+</div>
+<script type="text/javascript" src="//{{ site.comment.disqus }}.disqus.com/embed.js" async></script>
+{% endif %}
+</aside>
 {% endif %}
