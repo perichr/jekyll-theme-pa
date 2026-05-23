@@ -1,0 +1,23 @@
+---
+layout: nil
+---
+
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="user-scalable=no,width=device-width" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/css/layout-{{ site.style.layout }}.css" rel="stylesheet" />
+        <link href="/assets/css/color-{{ site.style.color }}.css" rel="stylesheet" />
+        <title>{{ page.title }} @ {{ site.title }}</title>
+    </head>
+    <body>
+        <header>
+            <a href="/" rel="me">{{ site.title }}</a>
+            <span>{{ site.description }}</span>
+        </header>
+        <div id="content">{{ content }}</div>
+        {% include aside.html %}
+    </body>
+</html>

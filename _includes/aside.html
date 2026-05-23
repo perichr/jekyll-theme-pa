@@ -1,0 +1,5 @@
+<nav><ul>{% for nav in site.nav %}<li><a title="{{ nav.title }}" href="{{ nav.href }}">{{ nav.text }}</a></li>{% endfor %}</ul></nav>
+<footer id="copyright">
+    <a href="https://github.com/{{ site.author.github }}" rel="me">{{ site.author.name }}</a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">BY-SA</a>
+</footer>
