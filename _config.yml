@@ -9,7 +9,7 @@ author:
 
 style:
   layout: "simp"
-  color: "light"
+  theme: "dash"
 
 nav:
   - text: "categoris"

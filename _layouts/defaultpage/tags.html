@@ -1,9 +1,11 @@
 ---
 layout: "archive"
 ---
-<div>{{ content }}</div>
-<ul id="tags" class="meta">{% assign tags_list = site.tags %}{% include mod/tags_list.html %}</ul>
+<aside>{{ content }}</aside>
+<nav><ul id="tags" class="meta">{% assign tags_list = site.tags %}{% include mod/tags_list.html %}</ul></nav>
 {% for tag in site.tags %}
+<article>
 <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
 <ul>{% assign pages_list = tag[1] %}{% include mod/pages_list.html %}</ul>
+</article>
 {% endfor %}
