@@ -1,0 +1,35 @@
+// utils-themes.scss
+// =========================================
+// 主题相关工具 - 依赖配置数据
+// =========================================
+
+// 1.1. 获取主题颜色的辅助函数
+@function get-theme-color($theme, $mode, $color-type) {
+  @if map-has-key($themes, $theme) {
+    $theme-config: map-get($themes, $theme);
+    @if map-has-key($theme-config, $mode) {
+      $mode-config: map-get($theme-config, $mode);
+      @if map-has-key($mode-config, $color-type) {
+        @return map-get($mode-config, $color-type);
+      }
+    }
+  }
+  @return null;
+}
+
+// 1.2. 主题切换mixin
+@mixin apply-theme($theme-name) {
+  @if map-has-key($themes, $theme-name) {
+    $theme-config: map-get($themes, $theme-name);
+    
+    // 应用浅色模式
+    @each $color-type, $color-value in map-get($theme-config, 'light') {
+      --#{$color-type}: #{$color-value};
+    }
+    
+    // 应用深色模式
+    @each $color-type, $color-value in map-get($theme-config, 'dark') {
+      --dark-#{$color-type}: #{$color-value};
+    }
+  }
+}

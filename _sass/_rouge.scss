@@ -1,7 +1,7 @@
 // 1. 定义全局变量与系统级颜色方案适配
 :root {
     // 通知浏览器当前文档支持浅色和深色两种配色方案
-    color-scheme: light dark;
+    // color-scheme: light dark;
 
     // 默认（浅色模式）变量定义
     --hl-color: #24292f;
@@ -23,38 +23,99 @@
     // 错误提示色
     --hl-err-color: #f6f8fa;
     --hl-err-bg: #82071e;
+    
+    // 深色模式变量定义
+    --hl-dark-color: #c9d1d9;
+    --hl-dark-bg: #161b22;
+    --hl-dark-keyword: #ff7b72;
+    --hl-dark-string: #a5d6ff;
+    --hl-dark-number: #79c0ff;
+    --hl-dark-comment: #8b949e;
+    --hl-dark-func: #d2a8ff;
+    --hl-dark-orange: #ffa657;
+    --hl-dark-green: #7ee787;
+    
+    --hl-dark-diff-del-color: #ffdcd7;
+    --hl-dark-diff-del-bg: #67060c;
+    --hl-dark-diff-add-color: #aff5b4;
+    --hl-dark-diff-add-bg: #033a16;
+    
+    --hl-dark-err-color: #f0f6fc;
+    --hl-dark-err-bg: #8e1519;
+    
+    // 主控变量：默认为浅色模式
+    --current-hl-color: var(--hl-color);
+    --current-hl-bg: var(--hl-bg);
+    --current-hl-keyword: var(--hl-keyword);
+    --current-hl-string: var(--hl-string);
+    --current-hl-number: var(--hl-number);
+    --current-hl-comment: var(--hl-comment);
+    --current-hl-func: var(--hl-func);
+    --current-hl-orange: var(--hl-orange);
+    --current-hl-green: var(--hl-green);
+    
+    --current-hl-diff-del-color: var(--hl-diff-del-color);
+    --current-hl-diff-del-bg: var(--hl-diff-del-bg);
+    --current-hl-diff-add-color: var(--hl-diff-add-color);
+    --current-hl-diff-add-bg: var(--hl-diff-add-bg);
+    
+    --current-hl-err-color: var(--hl-err-color);
+    --current-hl-err-bg: var(--hl-err-bg);
 }
 
-// 2. 深色模式下的变量覆盖
+// 2. 强制深色模式：通过 data-mode 属性控制
+:root[data-mode="dark"] {
+    --current-hl-color: var(--hl-dark-color);
+    --current-hl-bg: var(--hl-dark-bg);
+    --current-hl-keyword: var(--hl-dark-keyword);
+    --current-hl-string: var(--hl-dark-string);
+    --current-hl-number: var(--hl-dark-number);
+    --current-hl-comment: var(--hl-dark-comment);
+    --current-hl-func: var(--hl-dark-func);
+    --current-hl-orange: var(--hl-dark-orange);
+    --current-hl-green: var(--hl-dark-green);
+    
+    --current-hl-diff-del-color: var(--hl-dark-diff-del-color);
+    --current-hl-diff-del-bg: var(--hl-dark-diff-del-bg);
+    --current-hl-diff-add-color: var(--hl-dark-diff-add-color);
+    --current-hl-diff-add-bg: var(--hl-dark-diff-add-bg);
+    
+    --current-hl-err-color: var(--hl-dark-err-color);
+    --current-hl-err-bg: var(--hl-dark-err-bg);
+}
+
+// 3. 自动模式：跟随系统深色设置（仅当 data-mode 为 auto 时生效）
 @media (prefers-color-scheme: dark) {
-    :root {
-        --hl-color: #c9d1d9;
-        --hl-bg: #161b22;
-        --hl-keyword: #ff7b72;
-        --hl-string: #a5d6ff;
-        --hl-number: #79c0ff;
-        --hl-comment: #8b949e;
-        --hl-func: #d2a8ff;
-        --hl-orange: #ffa657;
-        --hl-green: #7ee787;
-
-        --hl-diff-del-color: #ffdcd7;
-        --hl-diff-del-bg: #67060c;
-        --hl-diff-add-color: #aff5b4;
-        --hl-diff-add-bg: #033a16;
-
-        --hl-err-color: #f0f6fc;
-        --hl-err-bg: #8e1519;
+    :root[data-mode="auto"] {
+        --current-hl-color: var(--hl-dark-color);
+        --current-hl-bg: var(--hl-dark-bg);
+        --current-hl-keyword: var(--hl-dark-keyword);
+        --current-hl-string: var(--hl-dark-string);
+        --current-hl-number: var(--hl-dark-number);
+        --current-hl-comment: var(--hl-dark-comment);
+        --current-hl-func: var(--hl-dark-func);
+        --current-hl-orange: var(--hl-dark-orange);
+        --current-hl-green: var(--hl-dark-green);
+        
+        --current-hl-diff-del-color: var(--hl-dark-diff-del-color);
+        --current-hl-diff-del-bg: var(--hl-dark-diff-del-bg);
+        --current-hl-diff-add-color: var(--hl-dark-diff-add-color);
+        --current-hl-diff-add-bg: var(--hl-dark-diff-add-bg);
+        
+        --current-hl-err-color: var(--hl-dark-err-color);
+        --current-hl-err-bg: var(--hl-dark-err-bg);
     }
 }
 
-// 3. 统一的 Rouge 语法高亮样式
+// 4. 统一的 Rouge 语法高亮样式
 .highlight {
+
+    overflow: auto;
     // 基础容器与空白符样式
     &,
     .w {
-        color: var(--hl-color);
-        background-color: var(--hl-bg);
+        color: var(--current-hl-color);
+        background-color: var(--current-hl-bg);
     }
 
     // 表格相关布局
@@ -75,7 +136,7 @@
     .kr,
     .kt,
     .kv {
-        color: var(--hl-keyword);
+        color: var(--current-hl-keyword);
     }
 
     // 字符串 (Strings)
@@ -90,7 +151,7 @@
     .sx,
     .s1,
     .ss {
-        color: var(--hl-string);
+        color: var(--current-hl-string);
     }
 
     // 数字/常量/运算符等 (Numbers & Constants)
@@ -117,7 +178,7 @@
     .o,
     .ow,
     .kc {
-        color: var(--hl-number);
+        color: var(--current-hl-number);
     }
 
     // 注释与其他灰色元素 (Comments & Grays)
@@ -131,47 +192,47 @@
     .cs,
     .gl,
     .gt {
-        color: var(--hl-comment);
+        color: var(--current-hl-comment);
     }
 
     // 函数名与装饰器 (Functions & Decorators)
     .nf,
     .fm,
     .nd {
-        color: var(--hl-func);
+        color: var(--current-hl-func);
     }
 
     // 标题 (Headers)
     .gh,
     .gu {
-        color: var(--hl-number);
+        color: var(--current-hl-number);
         font-weight: bold;
     }
 
     // 文本颜色类 (Text Colors)
     .gr,
     .err {
-        color: var(--hl-err-color);
+        color: var(--current-hl-err-color);
     }
     .ni,
     .si,
     .ge {
-        color: var(--hl-color);
+        color: var(--current-hl-color);
     }
 
     // 带有背景色的特殊状态 (Diff States)
     .gd {
-        color: var(--hl-diff-del-color);
-        background-color: var(--hl-diff-del-bg);
+        color: var(--current-hl-diff-del-color);
+        background-color: var(--current-hl-diff-del-bg);
     }
 
     .gi {
-        color: var(--hl-diff-add-color);
-        background-color: var(--hl-diff-add-bg);
+        color: var(--current-hl-diff-add-color);
+        background-color: var(--current-hl-diff-add-bg);
     }
 
     .err {
-        background-color: var(--hl-err-bg);
+        background-color: var(--current-hl-err-bg);
     }
 
     // 字体样式修饰
@@ -191,13 +252,37 @@
     .nc,
     .no,
     .nn {
-        color: var(--hl-orange);
+        color: var(--current-hl-orange);
     }
 
     // 绿色系标签与正则
     .sr,
     .na,
     .nt {
-        color: var(--hl-green);
+        color: var(--current-hl-green);
     }
 }
+
+// 5. JavaScript 接口说明
+/*
+ * JavaScript 使用方法：
+ * 
+ * // 强制浅色模式
+ * document.documentElement.setAttribute('data-mode', 'light');
+ * 
+ * // 强制深色模式
+ * document.documentElement.setAttribute('data-mode', 'dark');
+ * 
+ * // 自动跟随系统
+ * document.documentElement.setAttribute('data-mode', 'auto');
+ * 
+ * // 切换示例
+ * function setCodeTheme(mode) {
+ *   document.documentElement.setAttribute('data-mode', mode);
+ *   localStorage.setItem('code-theme-mode', mode);
+ * }
+ * 
+ * // 初始化
+ * const savedMode = localStorage.getItem('code-theme-mode') || 'auto';
+ * setCodeTheme(savedMode);
+ */

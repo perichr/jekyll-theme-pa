@@ -28,10 +28,6 @@ nav:
     title: "@SegmentFault"
     href: "https://segmentfault.com/u/perichr"
 
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-
 comment:
   output: true
   service: "disqus"
@@ -50,6 +46,11 @@ comment:
     crossorigin="anonymous"
   disqus: "perichr"
 
+permalink: /post/:year:month:day-:title
+
+paginate: 6
+paginate_path: /index/:num
+
 plugins:
   - jekyll-paginate
   - jekyll-feed
@@ -58,10 +59,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-permalink: /post/:year/:month/:day/:title
-
-paginate: 8
-paginate_path: /index/:num
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 sass:
   style: compressed

@@ -1,0 +1,36 @@
+// functions.scss
+// =========================================
+// SCSS 工具函数库 - 无需导入配置
+// =========================================
+
+// 1.1. 获取布局参数的辅助函数
+@function get-layout-param($param-name) {
+  @error "This function requires layout-config to be imported first.";
+}
+
+// 1.2. 获取主题颜色的辅助函数
+@function get-theme-color($theme, $mode, $color-type) {
+  @error "This function requires themes to be imported first.";
+}
+
+// 1.3. 颜色混合函数
+@function mix-colors($color1, $color2, $ratio: 50%) {
+  @return mix($color1, $color2, $ratio);
+}
+
+// 1.4. 计算对比度的函数
+@function contrast-ratio($fg, $bg) {
+  $l1: luminance($fg);
+  $l2: luminance($bg);
+  @if $l1 > $l2 { @return ($l1 + 0.05) / ($l2 + 0.05); }
+  @return ($l2 + 0.05) / ($l1 + 0.05);
+}
+
+// 1.5. 根据背景色自动选择文本颜色
+@function auto-text-color($bg-color) {
+  @if lightness($bg-color) > 50 {
+    @return #000000;  // 浅背景用黑色文字
+  } @else {
+    @return #ffffff;  // 深背景用白色文字
+  }
+}

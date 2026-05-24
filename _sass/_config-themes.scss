@@ -1,0 +1,56 @@
+// config-themes.scss
+// =========================================
+// 主题系统配置 - 纯数据定义
+// =========================================
+
+// 1.1. 主题定义：每个主题包含浅色和深色两套配色
+$themes: (
+  'dash': (
+    'light': (
+      'bg-color': #fdfdfd,
+      'text-color': #2c2c2c,
+      'heading-color': #1a1a1a,
+      'primary-color': #007bff,
+      'decorative-bg-opacity': 0.05,
+    ),
+    'dark': (
+      'bg-color': #121212,
+      'text-color': #eeeeee,
+      'heading-color': #ffffff,
+      'primary-color': #4da3ff,
+      'decorative-bg-opacity': 0.15,
+    )
+  ),
+  'forest': (
+    'light': (
+      'bg-color': #f5f9f5,
+      'text-color': #2e3a2e,
+      'heading-color': #1e2a1e,
+      'primary-color': #2e7d32,
+      'decorative-bg-opacity': 0.1,
+    ),
+    'dark': (
+      'bg-color': #0a140a,
+      'text-color': #d8e8d8,
+      'heading-color': #a8d8a8,
+      'primary-color': #6abf69,
+      'decorative-bg-opacity': 0.2,
+    )
+  ),
+  'ocean': (
+    'light': (
+      'bg-color': #f0f8ff,
+      'text-color': #1e3a5f,
+      'heading-color': #0d2b4e,
+      'primary-color': #0077be,
+      'decorative-bg-opacity': 0.08,
+    ),
+    'dark': (
+      'bg-color': #0a1f2e,
+      'text-color': #cce6f5,
+      'heading-color': #e6f2fa,
+      'primary-color': #4db8ff,
+      'decorative-bg-opacity': 0.18,
+    )
+  )
+);
