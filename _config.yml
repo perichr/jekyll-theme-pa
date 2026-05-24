@@ -50,9 +50,6 @@ comment:
     crossorigin="anonymous"
   disqus: "perichr"
 
-sass:
-  style: compressed
-
 plugins:
   - jekyll-paginate
   - jekyll-feed
@@ -62,10 +59,12 @@ plugins:
   - jekyll-seo-tag
 
 permalink: /post/:year/:month/:day/:title
-excerpt_separator: "<!--more-->"
 
 paginate: 8
 paginate_path: /index/:num
+
+sass:
+  style: compressed
 
 collections:
   pages:
