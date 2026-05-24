@@ -1,0 +1,203 @@
+// 1. 定义全局变量与系统级颜色方案适配
+:root {
+    // 通知浏览器当前文档支持浅色和深色两种配色方案
+    color-scheme: light dark;
+
+    // 默认（浅色模式）变量定义
+    --hl-color: #24292f;
+    --hl-bg: #f6f8fa;
+    --hl-keyword: #cf222e;
+    --hl-string: #0a3069;
+    --hl-number: #0550ae;
+    --hl-comment: #6e7781;
+    --hl-func: #8250df;
+    --hl-orange: #953800;
+    --hl-green: #116329;
+
+    // Diff 状态色
+    --hl-diff-del-color: #82071e;
+    --hl-diff-del-bg: #ffebe9;
+    --hl-diff-add-color: #116329;
+    --hl-diff-add-bg: #dafbe1;
+
+    // 错误提示色
+    --hl-err-color: #f6f8fa;
+    --hl-err-bg: #82071e;
+}
+
+// 2. 深色模式下的变量覆盖
+@media (prefers-color-scheme: dark) {
+    :root {
+        --hl-color: #c9d1d9;
+        --hl-bg: #161b22;
+        --hl-keyword: #ff7b72;
+        --hl-string: #a5d6ff;
+        --hl-number: #79c0ff;
+        --hl-comment: #8b949e;
+        --hl-func: #d2a8ff;
+        --hl-orange: #ffa657;
+        --hl-green: #7ee787;
+
+        --hl-diff-del-color: #ffdcd7;
+        --hl-diff-del-bg: #67060c;
+        --hl-diff-add-color: #aff5b4;
+        --hl-diff-add-bg: #033a16;
+
+        --hl-err-color: #f0f6fc;
+        --hl-err-bg: #8e1519;
+    }
+}
+
+// 3. 统一的 Rouge 语法高亮样式
+.highlight {
+    // 基础容器与空白符样式
+    &,
+    .w {
+        color: var(--hl-color);
+        background-color: var(--hl-bg);
+    }
+
+    // 表格相关布局
+    table {
+        td {
+            padding: 5px;
+        }
+        pre {
+            margin: 0;
+        }
+    }
+
+    // 关键字 (Keywords)
+    .k,
+    .kd,
+    .kn,
+    .kp,
+    .kr,
+    .kt,
+    .kv {
+        color: var(--hl-keyword);
+    }
+
+    // 字符串 (Strings)
+    .s,
+    .sa,
+    .sc,
+    .dl,
+    .sd,
+    .s2,
+    .se,
+    .sh,
+    .sx,
+    .s1,
+    .ss {
+        color: var(--hl-string);
+    }
+
+    // 数字/常量/运算符等 (Numbers & Constants)
+    .l,
+    .ld,
+    .m,
+    .mb,
+    .mf,
+    .mh,
+    .mi,
+    .il,
+    .mo,
+    .mx,
+    .sb,
+    .bp,
+    .ne,
+    .nl,
+    .py,
+    .nv,
+    .vc,
+    .vg,
+    .vi,
+    .vm,
+    .o,
+    .ow,
+    .kc {
+        color: var(--hl-number);
+    }
+
+    // 注释与其他灰色元素 (Comments & Grays)
+    .c,
+    .ch,
+    .cd,
+    .cm,
+    .cp,
+    .cpf,
+    .c1,
+    .cs,
+    .gl,
+    .gt {
+        color: var(--hl-comment);
+    }
+
+    // 函数名与装饰器 (Functions & Decorators)
+    .nf,
+    .fm,
+    .nd {
+        color: var(--hl-func);
+    }
+
+    // 标题 (Headers)
+    .gh,
+    .gu {
+        color: var(--hl-number);
+        font-weight: bold;
+    }
+
+    // 文本颜色类 (Text Colors)
+    .gr,
+    .err {
+        color: var(--hl-err-color);
+    }
+    .ni,
+    .si,
+    .ge {
+        color: var(--hl-color);
+    }
+
+    // 带有背景色的特殊状态 (Diff States)
+    .gd {
+        color: var(--hl-diff-del-color);
+        background-color: var(--hl-diff-del-bg);
+    }
+
+    .gi {
+        color: var(--hl-diff-add-color);
+        background-color: var(--hl-diff-add-bg);
+    }
+
+    .err {
+        background-color: var(--hl-err-bg);
+    }
+
+    // 字体样式修饰
+    .ges {
+        font-weight: bold;
+        font-style: italic;
+    }
+    .ge {
+        font-style: italic;
+    }
+    .gs {
+        font-weight: bold;
+    }
+
+    // 橙色系变量与属性
+    .nb,
+    .nc,
+    .no,
+    .nn {
+        color: var(--hl-orange);
+    }
+
+    // 绿色系标签与正则
+    .sr,
+    .na,
+    .nt {
+        color: var(--hl-green);
+    }
+}
