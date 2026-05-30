@@ -1,0 +1,34 @@
+[data-theme="dash"] {
+
+
+
+&:root {
+    --color-primary: rgb(59, 54, 54);
+    --color-secondary: rgb(109, 109, 109);
+    --color-alert: rgb(51, 0, 0);
+    --color-cover-h2: rgba(255, 255, 255,0.1);
+    --color-cover-h3: rgba(255, 255, 255,0.2);
+    --color-cover-odd: rgba(255, 255, 255,0.5);
+    --color-cover-even: rgba(255, 255, 255,0.3);
+    --color-shadow: rgba(0,0,0,0.3);
+    --bg-light-url: url(#{unquote("/assets/svg/dash-bg-light.svg")});
+    
+}
+
+
+main  > article  > h2  > time:before
+{
+    content: "> ";
+}
+.archive > article ul a:before
+{
+    content: "> ";
+}
+.archive > article time:after
+{
+    content: ">>";
+}
+
+}
+
+

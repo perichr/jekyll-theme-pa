@@ -3,7 +3,7 @@
 <h2>{{this_year}}</h2>
 <section>
 <h3>{{this_month}}</h3>
-<ul>{% endif %}<li><a href="{{ post.url }}" title="{{ post.title }}"><time datetime="{{ post.date | date: "%Y-%m-%dT%H:%M:%ST%z" }}">{{ post.date | date:'%d' }}</time>{{ post.title }}</a></li>{% if forloop.last %}</ul>
+<ul>{% endif %}<li><a href="{{ post.url }}" title="{{ post.title }}"><time datetime="{{ post.date | date: "%Y-%m-%dT%H:%M:%ST%z" }}">{{ post.date | date:'%Y%m%d' }}</time>{{ post.title }}</a></li>{% if forloop.last %}</ul>
 </section>
 </article>{% else %}{% if this_year != next_year %}</ul>
 </section>
